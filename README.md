@@ -1,4 +1,5 @@
 # Ingesoft2025-1G8
+![Project Logo](Proyecto/Assets/ArchiBox_Logo_HD.png)
 
 Nombre del proyecto: ArchiBox
 
