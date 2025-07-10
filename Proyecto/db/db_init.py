@@ -6,8 +6,8 @@ from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 from pathlib import Path
 
-# Get path to books.db one level above this file
-db_path = Path(__file__).resolve().parent.parent / "books.db"
+# Get path to books.db on the same level of this file
+db_path = Path(__file__).resolve().parent / "books.db"
 
 # Create SQLite engine and base class
 engine = create_engine(f"sqlite:///{db_path}", echo=True)
