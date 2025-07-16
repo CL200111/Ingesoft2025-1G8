@@ -1,5 +1,5 @@
 # 📦 Ingesoft2025-1G8 — ArchiBox  
-![Project Logo](Proyecto/Assets/ArchiBox_Banner_HD.png)
+![Project Logo](Proyecto/assets/ArchiBox_Banner_HD.png)
 
 ## 🧠 Nombre del proyecto  
 **ArchiBox** — Sistema de seguimiento para la digitalización de libros antiguos.
