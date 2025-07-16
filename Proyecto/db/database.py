@@ -13,7 +13,7 @@ class Database:
 
     def _setup(self):
         # Path to books.db (one level up from this script)
-        db_path = Path(__file__).resolve().parent.parent / "books.db"
+        db_path = Path(__file__).resolve().parent.parent / "data_archibox.db"
         self.engine = create_engine(f"sqlite:///{db_path}", echo=False)
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()

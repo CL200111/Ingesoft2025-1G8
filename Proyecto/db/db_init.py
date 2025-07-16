@@ -6,12 +6,11 @@ from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 
 from pathlib import Path
 
-# Get path to books.db on the same level of this file
-db_path = Path(__file__).resolve().parent / "books.db"
+# Get path to data_archibox.db on the same level of this file
+db_path = Path(__file__).resolve().parent.parent / "data_archibox.db"
 
 # Create SQLite engine and base class
 engine = create_engine(f"sqlite:///{db_path}", echo=True)
-#engine = create_engine('sqlite:///books.db', echo=True)
 
 Base = declarative_base()
 
@@ -106,7 +105,7 @@ class Tarea(Base):
 # --- Fill lookup tables ---
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
-    print("📚 Database initialized successfully.")
+    print(" Database initialized successfully.")
 
     Session = sessionmaker(bind=engine)
     session = Session()
@@ -157,4 +156,4 @@ if __name__ == '__main__':
     session.add_all(acciones)
 
     session.commit()
-    print("📚 Database initialized successfully.")
+    print(" Database initialized successfully.")
