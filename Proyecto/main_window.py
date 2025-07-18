@@ -1,5 +1,8 @@
 from PyQt5.QtWidgets import QMainWindow, QPushButton
 from ui.ui_main_window import Ui_MainWindow
+from PyQt5.QtGui import QIcon
+
+from utils.path_utils import get_asset_path
 
 # Import all CU screens (except CU06_login_screen)
 from use_cases.CU01_register_book_screen import RegisterBookScreen
@@ -33,6 +36,8 @@ class MainWindow(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.setWindowIcon(QIcon(get_asset_path("ArchiBox_alpha_icon.png")))  # or "app_icon.ico"
 
         self.user = user  # Could be passed from login window
 
@@ -139,3 +144,11 @@ class MainWindow(QMainWindow):
                 button.clicked.connect(lambda checked, widget=self.routes[feature]: self.ui.stackedWidget.setCurrentWidget(widget))
 
             layout.addWidget(button)
+
+    def center_on_screen(self):
+        screen = self.screen().availableGeometry()
+        size = self.geometry()
+        self.move(
+            screen.center().x() - size.width() // 2,
+            screen.center().y() - size.height() // 2
+        )
