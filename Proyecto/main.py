@@ -4,7 +4,7 @@ from use_cases.login_screen import LoginScreen
 from main_window import MainWindow
 
 def launch_main(user):
-    main = MainWindow()
+    main = MainWindow(user)
     main.show()
     login.close()
 

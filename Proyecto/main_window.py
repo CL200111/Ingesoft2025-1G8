@@ -36,45 +36,93 @@ class MainWindow(QMainWindow):
 
         self.user = user  # Could be passed from login window
 
-        # Create instances of each screen
         self.routes = {
-            "Dashboard": 0,
-            "Register Book": RegisterBookScreen(),
-            "Register Condition": RegisterConditionScreen(),
-            "Restore Book": RestoreBookScreen(),
-            "Digitize Book": DigitizeBookScreen(),
-            "Classify Book": ClassifyBookScreen(),
-            "Query Book History": QueryBookHistoryScreen(),
-            "Generate Report": GenerateReportScreen(),
-            "Create User": CreateUserScreen(),
-            "Edit User": EditUserScreen(),
-            "Deactivate User": DeactivateUserScreen(),
-            "Modify Book": ModifyBookScreen(),
-            "Deactivate Book": DeactivateBookScreen(),
-            "Notifications": NotificationScreen(),
-            "Physical QA": PhysicalQaScreen(),
-            "Filter Books by State": FilterBooksByStateScreen(),
-            "Search Books": SearchBooksScreen(),
-            "Search Users": SearchUsersScreen(),
-            "Assign Task": AssignTaskScreen(),
-            "Change Password": ChangePasswordScreen(),
-            "Restore Password": RestorePasswordScreen(),
-            "Query Book": QueryBookScreen(),
-            "Download Book": DownloadBookScreen(),
-            "Digital QA": DigitalQaScreen(),
-            "Create Category": CreateCategoryScreen(),
+            "Tablero": 0,
+            "Registrar Libro": RegisterBookScreen(),
+            "Registrar Condición": RegisterConditionScreen(),
+            "Restaurar Libro": RestoreBookScreen(),
+            "Digitalizar Libro": DigitizeBookScreen(),
+            "Clasificar Libro": ClassifyBookScreen(),
+            "Consultar Historial de Libro": QueryBookHistoryScreen(),
+            "Generar Reporte": GenerateReportScreen(),
+            "Crear Usuario": CreateUserScreen(),
+            "Editar Usuario": EditUserScreen(),
+            "Desactivar Usuario": DeactivateUserScreen(),
+            "Modificar Libro": ModifyBookScreen(),
+            "Desactivar Libro": DeactivateBookScreen(),
+            "Notificaciones": NotificationScreen(),
+            "Calidad Física": PhysicalQaScreen(),
+            "Filtrar Libros por Estado": FilterBooksByStateScreen(),
+            "Buscar Libros": SearchBooksScreen(),
+            "Buscar Usuarios": SearchUsersScreen(),
+            "Asignar Tarea": AssignTaskScreen(),
+            "Cambiar Contraseña": ChangePasswordScreen(),
+            "Restaurar Contraseña": RestorePasswordScreen(),
+            "Consultar Libro": QueryBookScreen(),
+            "Descargar Libro": DownloadBookScreen(),
+            "Calidad Digital": DigitalQaScreen(),
+            "Crear Categoría": CreateCategoryScreen(),
         }
 
-        # Add screens to stacked widget
-        for screen in self.routes.values():
+        # Mapeo de roles a características disponibles
+        role_permissions = {
+            "Administrador": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Crear Usuario", "Editar Usuario", "Desactivar Usuario", "Buscar Usuarios",
+                "Modificar Libro", "Generar Reporte", "Restaurar Contraseña",
+                "Consultar Historial de Libro", "Asignar Tarea", "Crear Categoría",
+                "Desactivar Libro"
+            ],
+            "Revisor": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Registrar Libro", "Registrar Condición"
+            ],
+            "Restaurador": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Restaurar Libro"
+            ],
+            "Digitalizador": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Digitalizar Libro"
+            ],
+            "Supervisor de calidad": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Calidad Digital", "Calidad Física"
+            ],
+            "Clasificador": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Clasificar Libro"
+            ],
+            "Lector": [
+                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Consultar Libro", "Descargar Libro"
+            ]
+        }
+
+        # Obtener nombre de rol del usuario
+        user_role = getattr(getattr(self.user, "rol", None), "nombre", "Lector")
+        print("Usuario leido:",user)
+
+        # Obtener nombre de rol del usuario (si existe)
+        #user_role = self.user.rol.nombre if self.user and self.user.rol else "Lector"
+
+        print("Rol identificado: ", user_role)
+
+        # Obtener funciones disponibles según el rol
+        self.available_features = role_permissions.get(user_role, [])
+
+        # Asegurarse de que siempre se incluya el tablero
+        if "Tablero" not in self.available_features:
+            self.available_features.insert(0, "Tablero")
+
+        # Agregar pantallas al stackedWidget solo si están permitidas
+        for feature in self.available_features:
+            screen = self.routes.get(feature)
             if isinstance(screen, int):
                 continue
             self.ui.stackedWidget.addWidget(screen)
 
-        # Available buttons (simulate full access for now)
-        self.available_features = list(self.routes.keys())
-
-        # Populate sidebar dynamically
+        # Poblar el panel lateral con botones correspondientes
         self._populate_sidebar()
 
     def _populate_sidebar(self):
