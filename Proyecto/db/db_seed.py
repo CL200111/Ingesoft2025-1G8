@@ -3,18 +3,11 @@ from sqlalchemy.orm import sessionmaker
 from database import Database
 from models import Usuario, Libro, Tarea
 from models import Rol, EstadoLibro, Categoria
+from utils.password_hashing import hash_password
 import lookup_cache as lookup
-import bcrypt
 
 # Start DB session
 session = Database().get_session()
-
-# --- Helper: simple password hashing ---
-def hash_password(password: str) -> str:
-    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
-
-#def hash_password(password: str) -> str:
-#    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 
 # --- Seed example users ---
 
