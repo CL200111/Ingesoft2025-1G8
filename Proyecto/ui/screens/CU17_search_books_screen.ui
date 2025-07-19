@@ -33,6 +33,12 @@
    </item>
    <item>
     <layout class="QFormLayout" name="formLayout">
+     <property name="horizontalSpacing">
+      <number>10</number>
+     </property>
+     <property name="verticalSpacing">
+      <number>10</number>
+     </property>
      <property name="leftMargin">
       <number>10</number>
      </property>
@@ -43,12 +49,6 @@
       <number>10</number>
      </property>
      <property name="bottomMargin">
-      <number>10</number>
-     </property>
-     <property name="horizontalSpacing">
-      <number>10</number>
-     </property>
-     <property name="verticalSpacing">
       <number>10</number>
      </property>
      <item row="0" column="0">
@@ -126,12 +126,12 @@
      </attribute>
      <column>
       <property name="text">
-       <string>Título</string>
+       <string>ID</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Autor</string>
+       <string>Título</string>
       </property>
      </column>
      <column>

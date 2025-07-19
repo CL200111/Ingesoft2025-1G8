@@ -98,22 +98,12 @@ class Ui_search_books_screen(object):
         self.label_estado.setText(_translate("search_books_screen", "Estado:"))
         self.search_button.setText(_translate("search_books_screen", "Buscar"))
         item = self.results_table.horizontalHeaderItem(0)
-        item.setText(_translate("search_books_screen", "Título"))
+        item.setText(_translate("search_books_screen", "ID"))
         item = self.results_table.horizontalHeaderItem(1)
-        item.setText(_translate("search_books_screen", "Autor"))
+        item.setText(_translate("search_books_screen", "Título"))
         item = self.results_table.horizontalHeaderItem(2)
         item.setText(_translate("search_books_screen", "ISBN"))
         item = self.results_table.horizontalHeaderItem(3)
         item.setText(_translate("search_books_screen", "Categoría"))
         item = self.results_table.horizontalHeaderItem(4)
         item.setText(_translate("search_books_screen", "Estado"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    search_books_screen = QtWidgets.QWidget()
-    ui = Ui_search_books_screen()
-    ui.setupUi(search_books_screen)
-    search_books_screen.show()
-    sys.exit(app.exec_())

@@ -14,7 +14,7 @@ class SearchBooksScreen(QWidget):
         self.session = self.db.get_session()
 
         self.ui.search_button.clicked.connect(self.search_books)
-        
+
         try:
             self._load_combos()
         except Exception as e:
@@ -27,7 +27,7 @@ class SearchBooksScreen(QWidget):
         """
         # Cargar categorías usando una consulta SQL directa para asegurar compatibilidad
         self.ui.categoria_combo.addItem("Todas", 0)
-        
+
         # CORRECCIÓN: Se usa SQL directo para consultar la tabla 'categoria' (singular)
         sql_query = text("SELECT id, nombre FROM categoria ORDER BY nombre")
         result = self.session.execute(sql_query)
@@ -75,12 +75,13 @@ class SearchBooksScreen(QWidget):
                 categoria_nombre = libro.categoria.nombre if libro.categoria else "N/A"
                 estado_nombre = libro.estado.nombre if libro.estado else "N/A"
 
-                self.ui.results_table.setItem(row_position, 0, QTableWidgetItem(libro.titulo))
-                self.ui.results_table.setItem(row_position, 1, QTableWidgetItem(libro.autor))
-                self.ui.results_table.setItem(row_position, 2, QTableWidgetItem(libro.isbn))
-                self.ui.results_table.setItem(row_position, 3, QTableWidgetItem(categoria_nombre))
-                self.ui.results_table.setItem(row_position, 4, QTableWidgetItem(estado_nombre))
-        
+                self.ui.results_table.setItem(row_position, 0, QTableWidgetItem(str(libro.id)))
+                self.ui.results_table.setItem(row_position, 1, QTableWidgetItem(libro.titulo))
+                self.ui.results_table.setItem(row_position, 2, QTableWidgetItem(libro.autor))
+                self.ui.results_table.setItem(row_position, 3, QTableWidgetItem(libro.isbn))
+                self.ui.results_table.setItem(row_position, 4, QTableWidgetItem(categoria_nombre))
+                self.ui.results_table.setItem(row_position, 5, QTableWidgetItem(estado_nombre))
+
         except Exception as e:
             print(f"Error durante la búsqueda de libros: {e}")
 
