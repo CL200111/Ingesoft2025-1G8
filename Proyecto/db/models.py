@@ -23,7 +23,7 @@ class EstadoLibro(Base):
     orden = Column(Integer)
 
 class Categoria(Base):
-    __tablename__ = 'categorias'
+    __tablename__ = 'categoria'
     id = Column(Integer, primary_key=True, autoincrement=True)
     nombre = Column(String)
     descripcion = Column(Text)
@@ -67,7 +67,7 @@ class Libro(Base):
     estado_id = Column(Integer, ForeignKey('estados_libro.id'))
     estanteria = Column(String)
     espacio = Column(String)
-    categoria_id = Column(Integer, ForeignKey('categorias.id'))
+    categoria_id = Column(Integer, ForeignKey('categoria.id'))
     directorio_pdf = Column(String)
 
     estado = relationship("EstadoLibro")

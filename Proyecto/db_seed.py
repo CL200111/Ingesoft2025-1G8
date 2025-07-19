@@ -151,6 +151,28 @@ if __name__ == "__main__":
         inserted_target_id=lector_user.id
     )
 
+ # --- SEED CATEGORIES ---
+    categories_data = [
+        ("Novela", "Obras de ficción narrativa de cierta extensión"),
+        ("Poesía", "Composiciones literarias en verso"),
+        ("Ensayo", "Escritos breves que analizan un tema específico"),
+        ("Biografía", "Relatos de la vida de personas reales"),
+        ("Historia", "Obras sobre eventos históricos"),
+        ("Ciencia Ficción", "Literatura basada en supuestos científicos"),
+        ("Fantasía", "Obras con elementos mágicos o sobrenaturales"),
+        ("Infantil", "Literatura dirigida a niños"),
+        ("Terror", "Obras diseñadas para causar miedo"),
+        ("Aventura", "Narrativas de viajes y acciones emocionantes")
+    ]
+
+    for nombre, descripcion in categories_data:
+            nueva_categoria = Categoria(
+                nombre=nombre,
+                descripcion=descripcion
+            )
+            session.add(nueva_categoria)
+            session.commit()
+
     #--- SEED BOOKS ---
     reviser = session.query(Usuario).filter_by(correo_electronico="suzana.revisor@example.com", estado=True).first()
 
