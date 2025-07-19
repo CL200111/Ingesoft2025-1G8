@@ -39,7 +39,7 @@ class CreateUserScreen(QWidget):
         # Validations
         if not all([nombres, apellidos, correo, contraseña]):
             self._show_error("Por favor complete todos los campos.")
-#!!     PLEASE ERASE THIS LINE VVVVVVV
+
             print(f"✍️ Logging creation by user {self.user.id}")
             return
 
@@ -65,7 +65,6 @@ class CreateUserScreen(QWidget):
         session.commit()
 
         print("Usuario creado exitosamente.")
-        #self._write_to_historial(nuevo_usuario)
 
         new_user = session.query(Usuario).filter_by(correo_electronico=correo, estado=True).first()
         write_to_historial(
@@ -92,10 +91,3 @@ class CreateUserScreen(QWidget):
 
     def _show_error(self, message):
         self.ui.errorLabel.setText(message)
-
-    def _write_to_historial(self, new_user_id):
-        print(f"✍️ Logging creation of user {new_user_id} by user {self.user.id}")
-        # Placeholder for writing to historial
-    #def _write_to_historial(self, user):
-    #    print(f"[HISTORIAL] Usuario {user.id} registrado. (pendiente registrar en tabla historial)")
-        # TODO: Implementar escritura real en historial
