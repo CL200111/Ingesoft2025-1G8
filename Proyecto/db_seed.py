@@ -189,7 +189,13 @@ if __name__ == "__main__":
         ("Sobre héroes y tumbas", "Ernesto Sabato", 460, "A1", "10"),
         ("La tregua", "Mario Benedetti", 180, "A1", "11"),
         ("La casa de los espíritus", "Isabel Allende", 490, "A1", "12"),
+        ("El Cartógrafo de Recuerdos", "Valeria Luna", 312, "B2", "07"),
+        ("El Silencio Prohibido", "Andrés Solano", 278, "C3", "01"),
+        ("El Último Jardinero", "Lucía Herrera", 345, "A2", "05"),
+        ("La Harina de Luna", "Mariana Campos", 401, "D1", "02"),
+        ("La Sombra en el Cristal", "Joaquín Vidal", 389, "B1", "04"),
     ]
+
 
     for titulo, autor, paginas, estanteria, espacio in books_data:
         nuevo_libro = Libro(

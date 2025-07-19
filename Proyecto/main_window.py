@@ -61,7 +61,7 @@ class MainWindow(QMainWindow):
             "Buscar Libros": SearchBooksScreen(),
             "Buscar Usuarios": SearchUsersScreen(),
             "Asignar Tarea": AssignTaskScreen(),
-            "Cambiar Contraseña": ChangePasswordScreen(),
+            "Cambiar Contraseña": ChangePasswordScreen(self.user),
             "Restaurar Contraseña": RestorePasswordScreen(),
             "Consultar Libro": QueryBookScreen(),
             "Descargar Libro": DownloadBookScreen(),
@@ -72,34 +72,34 @@ class MainWindow(QMainWindow):
         # Mapeo de roles a características disponibles
         role_permissions = {
             "Administrador": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Crear Usuario", "Editar Usuario", "Desactivar Usuario", "Buscar Usuarios",
                 "Modificar Libro", "Generar Reporte", "Restaurar Contraseña",
                 "Consultar Historial de Libro", "Asignar Tarea", "Crear Categoría",
                 "Desactivar Libro"
             ],
             "Revisor": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Registrar Libro", "Registrar Condición"
             ],
             "Restaurador": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Restaurar Libro"
             ],
             "Digitalizador": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Digitalizar Libro"
             ],
             "Supervisor de calidad": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Calidad Digital", "Calidad Física"
             ],
             "Clasificador": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Clasificar Libro"
             ],
             "Lector": [
-                "Filtrar Libros por Estado", "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
+                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
                 "Consultar Libro", "Descargar Libro"
             ]
         }
@@ -117,8 +117,8 @@ class MainWindow(QMainWindow):
         self.available_features = role_permissions.get(user_role, [])
 
         # Asegurarse de que siempre se incluya el tablero
-        if "Tablero" not in self.available_features:
-            self.available_features.insert(0, "Tablero")
+        #if "Tablero" not in self.available_features:
+        #    self.available_features.insert(0, "Tablero")
 
         # Agregar pantallas al stackedWidget solo si están permitidas
         for feature in self.available_features:
