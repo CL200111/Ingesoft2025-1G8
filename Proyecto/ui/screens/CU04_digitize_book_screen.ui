@@ -2,11 +2,29 @@
 <ui version="4.0">
  <class>digitize_book_screen</class>
  <widget class="QWidget" name="digitize_book_screen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Digitalizar Libro</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_heading">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>📚 digitize book screen Screen</string>
+      <string>📠 Digitalizar Libro</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -14,18 +32,99 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="titleInput">
-     <property name="placeholderText">
-      <string>Enter text...</string>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_select_book">
+       <property name="text">
+        <string>Seleccionar Libro a Digitalizar:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QComboBox" name="book_combo"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_title">
+       <property name="text">
+        <string>Título:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="title_display">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_author">
+       <property name="text">
+        <string>Autor:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="author_display">
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_pdf_filename">
+       <property name="text">
+        <string>Nombre del Archivo PDF:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="pdf_filename_input">
+       <property name="placeholderText">
+        <string>Ej: 978-0441013593.pdf</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="save_button">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Guardar Digitalización</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="saveButton">
-     <property name="text">
-      <string>➕ Confirm</string>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

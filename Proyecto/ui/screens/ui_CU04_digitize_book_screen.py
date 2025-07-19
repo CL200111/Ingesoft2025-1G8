@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file './CU04_digitize_book_screen.ui'
+# Form implementation generated from reading ui file 'CU04_digitize_book_screen.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -14,24 +14,79 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_digitize_book_screen(object):
     def setupUi(self, digitize_book_screen):
         digitize_book_screen.setObjectName("digitize_book_screen")
+        digitize_book_screen.resize(800, 600)
         self.verticalLayout = QtWidgets.QVBoxLayout(digitize_book_screen)
         self.verticalLayout.setObjectName("verticalLayout")
         self.label_heading = QtWidgets.QLabel(digitize_book_screen)
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_heading.setFont(font)
         self.label_heading.setAlignment(QtCore.Qt.AlignCenter)
         self.label_heading.setObjectName("label_heading")
         self.verticalLayout.addWidget(self.label_heading)
-        self.titleInput = QtWidgets.QLineEdit(digitize_book_screen)
-        self.titleInput.setObjectName("titleInput")
-        self.verticalLayout.addWidget(self.titleInput)
-        self.saveButton = QtWidgets.QPushButton(digitize_book_screen)
-        self.saveButton.setObjectName("saveButton")
-        self.verticalLayout.addWidget(self.saveButton)
+        self.formLayout = QtWidgets.QFormLayout()
+        self.formLayout.setContentsMargins(10, 10, 10, 10)
+        self.formLayout.setObjectName("formLayout")
+        self.label_select_book = QtWidgets.QLabel(digitize_book_screen)
+        self.label_select_book.setObjectName("label_select_book")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_select_book)
+        self.book_combo = QtWidgets.QComboBox(digitize_book_screen)
+        self.book_combo.setObjectName("book_combo")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.book_combo)
+        self.label_title = QtWidgets.QLabel(digitize_book_screen)
+        self.label_title.setObjectName("label_title")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_title)
+        self.title_display = QtWidgets.QLineEdit(digitize_book_screen)
+        self.title_display.setReadOnly(True)
+        self.title_display.setObjectName("title_display")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.title_display)
+        self.label_author = QtWidgets.QLabel(digitize_book_screen)
+        self.label_author.setObjectName("label_author")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_author)
+        self.author_display = QtWidgets.QLineEdit(digitize_book_screen)
+        self.author_display.setReadOnly(True)
+        self.author_display.setObjectName("author_display")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.author_display)
+        self.label_pdf_filename = QtWidgets.QLabel(digitize_book_screen)
+        self.label_pdf_filename.setObjectName("label_pdf_filename")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_pdf_filename)
+        self.pdf_filename_input = QtWidgets.QLineEdit(digitize_book_screen)
+        self.pdf_filename_input.setObjectName("pdf_filename_input")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.pdf_filename_input)
+        self.verticalLayout.addLayout(self.formLayout)
+        self.save_button = QtWidgets.QPushButton(digitize_book_screen)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.save_button.setFont(font)
+        self.save_button.setObjectName("save_button")
+        self.verticalLayout.addWidget(self.save_button)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
 
         self.retranslateUi(digitize_book_screen)
         QtCore.QMetaObject.connectSlotsByName(digitize_book_screen)
 
     def retranslateUi(self, digitize_book_screen):
         _translate = QtCore.QCoreApplication.translate
-        self.label_heading.setText(_translate("digitize_book_screen", "📚 digitize book screen Screen"))
-        self.titleInput.setPlaceholderText(_translate("digitize_book_screen", "Enter text..."))
-        self.saveButton.setText(_translate("digitize_book_screen", "➕ Confirm"))
+        digitize_book_screen.setWindowTitle(_translate("digitize_book_screen", "Digitalizar Libro"))
+        self.label_heading.setText(_translate("digitize_book_screen", "📠 Digitalizar Libro"))
+        self.label_select_book.setText(_translate("digitize_book_screen", "Seleccionar Libro a Digitalizar:"))
+        self.label_title.setText(_translate("digitize_book_screen", "Título:"))
+        self.label_author.setText(_translate("digitize_book_screen", "Autor:"))
+        self.label_pdf_filename.setText(_translate("digitize_book_screen", "Nombre del Archivo PDF:"))
+        self.pdf_filename_input.setPlaceholderText(_translate("digitize_book_screen", "Ej: 978-0441013593.pdf"))
+        self.save_button.setText(_translate("digitize_book_screen", "Guardar Digitalización"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    digitize_book_screen = QtWidgets.QWidget()
+    ui = Ui_digitize_book_screen()
+    ui.setupUi(digitize_book_screen)
+    digitize_book_screen.show()
+    sys.exit(app.exec_())
