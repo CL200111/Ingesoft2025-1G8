@@ -2,28 +2,181 @@
 <ui version="4.0">
  <class>register_book_screen</class>
  <widget class="QWidget" name="register_book_screen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1102</width>
+    <height>716</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Registrar Libro</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label_heading">
-     <property name="text">
-      <string>📚 register book screen Screen</string>
+    <widget class="QLabel" name="label">
+     <property name="enabled">
+      <bool>true</bool>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="minimumSize">
+      <size>
+       <width>907</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Autor:</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="titleInput">
+    <widget class="QLineEdit" name="autorInput">
      <property name="placeholderText">
-      <string>Enter text...</string>
+      <string>Autor</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Título:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="tituloInput">
+     <property name="placeholderText">
+      <string>Título</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_3">
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Fecha:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDateEdit" name="fechaInput">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_6">
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Número de páginas:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="paginasInput">
+     <property name="placeholderText">
+      <string>Número de páginas</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_5">
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Estantería:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="estanteriaInput">
+     <property name="placeholderText">
+      <string>Estantería</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_4">
+     <property name="maximumSize">
+      <size>
+       <width>666</width>
+       <height>33</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Espacio:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="espacioInput">
+     <property name="placeholderText">
+      <string>Espacio</string>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QPushButton" name="saveButton">
      <property name="text">
-      <string>➕ Confirm</string>
+      <string>Registrar Libro</string>
      </property>
     </widget>
    </item>
