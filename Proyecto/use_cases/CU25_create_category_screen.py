@@ -49,7 +49,13 @@ class CreateCategoryScreen(QWidget):
             session.commit()
 
 
-    
+             # Registrar en historial
+            write_to_historial(
+                inserted_usuario_id=self.user.id,
+                inserted_accion_id=lookup.accion_crear.id,
+                inserted_target_type_id=lookup.tt_categoria.id,
+                inserted_target_id=nueva_categoria.id
+            )
 
             QMessageBox.information(
                 self,
