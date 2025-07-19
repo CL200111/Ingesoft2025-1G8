@@ -4,14 +4,17 @@ from ui.screens.ui_CU09_create_user_screen import Ui_create_user_screen
 from db.database import Database
 from db.models import Usuario, Rol, Historial
 from utils.password_hashing import hash_password
+from utils.history_logger import write_to_historial
+import db.lookup_cache as lookup
 import re
 import datetime
 
 session = Database().get_session()
 
 class CreateUserScreen(QWidget):
-    def __init__(self):
+    def __init__(self, user=None):
         super().__init__()
+        self.user = user
         self.ui = Ui_create_user_screen()
         self.ui.setupUi(self)
 
@@ -36,6 +39,8 @@ class CreateUserScreen(QWidget):
         # Validations
         if not all([nombres, apellidos, correo, contraseña]):
             self._show_error("Por favor complete todos los campos.")
+#!!     PLEASE ERASE THIS LINE VVVVVVV
+            print(f"✍️ Logging creation by user {self.user.id}")
             return
 
         if not self._validate_password(contraseña):
@@ -60,7 +65,16 @@ class CreateUserScreen(QWidget):
         session.commit()
 
         print("Usuario creado exitosamente.")
-        self._write_to_historial(nuevo_usuario)
+        #self._write_to_historial(nuevo_usuario)
+
+        new_user = session.query(Usuario).filter_by(correo_electronico=correo, estado=True).first()
+        write_to_historial(
+            inserted_usuario_id=self.user.id,
+            inserted_accion_id=lookup.accion_crear.id,
+            inserted_target_type_id=lookup.tt_usuario.id,
+            inserted_target_id=new_user.id
+            )
+
         QMessageBox.information(self, "Éxito", "Usuario creado exitosamente")
         self._clear_form()
 
@@ -79,6 +93,9 @@ class CreateUserScreen(QWidget):
     def _show_error(self, message):
         self.ui.errorLabel.setText(message)
 
-    def _write_to_historial(self, user):
-        print(f"[HISTORIAL] Usuario {user.id} registrado. (pendiente registrar en tabla historial)")
+    def _write_to_historial(self, new_user_id):
+        print(f"✍️ Logging creation of user {new_user_id} by user {self.user.id}")
+        # Placeholder for writing to historial
+    #def _write_to_historial(self, user):
+    #    print(f"[HISTORIAL] Usuario {user.id} registrado. (pendiente registrar en tabla historial)")
         # TODO: Implementar escritura real en historial

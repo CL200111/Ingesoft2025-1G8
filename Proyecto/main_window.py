@@ -50,7 +50,7 @@ class MainWindow(QMainWindow):
             "Clasificar Libro": ClassifyBookScreen(),
             "Consultar Historial de Libro": QueryBookHistoryScreen(),
             "Generar Reporte": GenerateReportScreen(),
-            "Crear Usuario": CreateUserScreen(),
+            "Crear Usuario": CreateUserScreen(self.user),
             "Editar Usuario": EditUserScreen(),
             "Desactivar Usuario": DeactivateUserScreen(),
             "Modificar Libro": ModifyBookScreen(),

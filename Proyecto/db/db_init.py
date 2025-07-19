@@ -127,6 +127,7 @@ if __name__ == '__main__':
         TargetType(nombre="tarea"),
         TargetType(nombre="categoria")
     ]
+    session.add_all(target_types)
 
     estados_libro = [
         EstadoLibro(nombre="En recepcion", descripcion="Aún no procesado", orden=1),

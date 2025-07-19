@@ -1,5 +1,5 @@
-from database import Database
-from models import Rol, EstadoLibro, TargetType, Accion
+from db.database import Database
+from db.models import Rol, EstadoLibro, TargetType, Accion
 
 # Start DB session
 session = Database().get_session()
