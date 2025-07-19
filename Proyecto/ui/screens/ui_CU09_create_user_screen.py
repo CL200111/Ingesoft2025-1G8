@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'CU09_create_user_screen.ui'
+# Form implementation generated from reading ui file 'ui/screens/CU09_create_user_screen.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -58,7 +58,7 @@ class Ui_create_user_screen(object):
         self.label_password.setObjectName("label_password")
         self.verticalLayout.addWidget(self.label_password)
         self.passwordInput = QtWidgets.QLineEdit(create_user_screen)
-        self.passwordInput.setEchoMode(QtWidgets.QLineEdit.Password)
+        self.passwordInput.setInputMethodHints(QtCore.Qt.ImhNone)
         self.passwordInput.setObjectName("passwordInput")
         self.verticalLayout.addWidget(self.passwordInput)
         self.label_rol = QtWidgets.QLabel(create_user_screen)

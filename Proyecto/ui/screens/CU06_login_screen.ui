@@ -42,9 +42,12 @@
    </property>
    <property name="font">
     <font>
-     <family>Mononoki Nerd Font Mono</family>
+     <family>Sans Serif</family>
      <pointsize>12</pointsize>
     </font>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
    </property>
    <property name="text">
     <string>Acceder</string>
@@ -71,8 +74,10 @@
    </property>
    <property name="font">
     <font>
-     <family>Mononoki Nerd Font Mono</family>
+     <family>Sans Serif</family>
      <pointsize>14</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
     </font>
    </property>
    <property name="text">
@@ -90,7 +95,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Mononoki Nerd Font Mono</family>
+     <family>Sans Serif</family>
      <pointsize>14</pointsize>
     </font>
    </property>
@@ -106,6 +111,12 @@
      <width>381</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
   </widget>
   <widget class="QLabel" name="err_display">

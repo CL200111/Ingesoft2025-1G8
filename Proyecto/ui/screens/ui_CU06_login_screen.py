@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/screens/CU06_login_screen.ui'
+# Form implementation generated from reading ui file 'CU06_login_screen.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.11
 #
@@ -26,9 +26,10 @@ class Ui_login_screen(object):
         self.access = QtWidgets.QPushButton(login_screen)
         self.access.setGeometry(QtCore.QRect(140, 360, 120, 30))
         font = QtGui.QFont()
-        font.setFamily("Mononoki Nerd Font Mono")
+        font.setFamily("Sans Serif")
         font.setPointSize(12)
         self.access.setFont(font)
+        self.access.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
         self.access.setObjectName("access")
         self.email_in = QtWidgets.QLineEdit(login_screen)
         self.email_in.setGeometry(QtCore.QRect(10, 250, 381, 31))
@@ -36,19 +37,23 @@ class Ui_login_screen(object):
         self.email_ask = QtWidgets.QLabel(login_screen)
         self.email_ask.setGeometry(QtCore.QRect(20, 220, 71, 31))
         font = QtGui.QFont()
-        font.setFamily("Mononoki Nerd Font Mono")
+        font.setFamily("Sans Serif")
         font.setPointSize(14)
+        font.setBold(False)
+        font.setWeight(50)
         self.email_ask.setFont(font)
         self.email_ask.setObjectName("email_ask")
         self.password_ask_2 = QtWidgets.QLabel(login_screen)
         self.password_ask_2.setGeometry(QtCore.QRect(20, 290, 121, 31))
         font = QtGui.QFont()
-        font.setFamily("Mononoki Nerd Font Mono")
+        font.setFamily("Sans Serif")
         font.setPointSize(14)
         self.password_ask_2.setFont(font)
         self.password_ask_2.setObjectName("password_ask_2")
         self.password_in = QtWidgets.QLineEdit(login_screen)
         self.password_in.setGeometry(QtCore.QRect(10, 320, 381, 31))
+        self.password_in.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
+        self.password_in.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password_in.setObjectName("password_in")
         self.err_display = QtWidgets.QLabel(login_screen)
         self.err_display.setGeometry(QtCore.QRect(10, 400, 381, 16))

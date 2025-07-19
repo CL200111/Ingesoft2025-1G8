@@ -97,8 +97,8 @@
    </item>
    <item>
     <widget class="QLineEdit" name="passwordInput">
-     <property name="echoMode">
-      <enum>QLineEdit::Password</enum>
+     <property name="inputMethodHints">
+      <set>Qt::ImhNone</set>
      </property>
      <property name="placeholderText">
       <string>Ingrese contraseña</string>
