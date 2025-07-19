@@ -51,6 +51,11 @@ class Ui_MainWindow(object):
         self.layout_dashboard = QtWidgets.QVBoxLayout(self.page_dashboard)
         self.layout_dashboard.setObjectName("layout_dashboard")
         self.label_dashboard = QtWidgets.QLabel(self.page_dashboard)
+        font = QtGui.QFont()
+        font.setPointSize(18)
+        self.label_dashboard.setFont(font)
+        self.label_dashboard.setFrameShadow(QtWidgets.QFrame.Plain)
+        self.label_dashboard.setAlignment(QtCore.Qt.AlignCenter)
         self.label_dashboard.setObjectName("label_dashboard")
         self.layout_dashboard.addWidget(self.label_dashboard)
         self.stackedWidget.addWidget(self.page_dashboard)
@@ -87,6 +92,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ArchiBox - Main"))
-        self.label_dashboard.setText(_translate("MainWindow", "Dashboard Screen"))
+        self.label_dashboard.setText(_translate("MainWindow", "¡Bienvenido al sistema ArchiBox!"))
         self.label_books.setText(_translate("MainWindow", "Books Screen"))
         self.label_users.setText(_translate("MainWindow", "Users Screen"))
