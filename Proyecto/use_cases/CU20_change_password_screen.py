@@ -82,12 +82,6 @@ class ChangePasswordScreen(QWidget):
             return
 
         # All good — update password
-        #self.user.set_password(new)
-        #self.user.save_to_db()
-
-
-
-        # Update user password
         usuario_db = session.query(Usuario).filter_by(id=self.user.id, estado=True).first()
         if usuario_db:
             usuario_db.hash_contraseña = hash_password(new)
@@ -106,12 +100,6 @@ class ChangePasswordScreen(QWidget):
         else:
             self._show_error("No se pudo actualizar la contraseña.")
 
-
-
-
-
-
-        QMessageBox.information(self, "Éxito", "Contraseña actualizada correctamente.")
         self._clear_inputs()
 
     def _validate_password(self, password):
