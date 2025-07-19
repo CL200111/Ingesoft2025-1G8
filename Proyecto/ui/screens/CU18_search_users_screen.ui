@@ -2,11 +2,29 @@
 <ui version="4.0">
  <class>search_users_screen</class>
  <widget class="QWidget" name="search_users_screen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Búsqueda de Usuarios</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_heading">
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="text">
-      <string>📚 search users screen Screen</string>
+      <string>👥 Búsqueda de Usuarios</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -14,17 +32,114 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="titleInput">
-     <property name="placeholderText">
-      <string>Enter text...</string>
+    <layout class="QFormLayout" name="formLayout">
+     <property name="leftMargin">
+      <number>10</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_nombre">
+       <property name="text">
+        <string>Nombres:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="nombres_input"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_apellidos">
+       <property name="text">
+        <string>Apellidos:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="apellidos_input"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_correo">
+       <property name="text">
+        <string>Correo Electrónico:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="correo_input"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_rol">
+       <property name="text">
+        <string>Rol:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="rol_combo"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_estado">
+       <property name="text">
+        <string>Estado:</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QComboBox" name="estado_combo"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QPushButton" name="search_button">
+     <property name="text">
+      <string>Buscar Usuarios</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="saveButton">
-     <property name="text">
-      <string>➕ Confirm</string>
+    <widget class="QTableWidget" name="results_table">
+     <property name="editTriggers">
+      <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>true</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Nombres</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Apellidos</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Correo Electrónico</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Rol</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Estado</string>
+      </property>
+     </column>
     </widget>
    </item>
   </layout>

@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU03_restore_book_screen import Ui_restore_book_screen
 
 class RestoreBookScreen(QWidget):
-    def __init__(self):
+    def __init__(self, user = None):
         super().__init__()
         self.ui = Ui_restore_book_screen()
         self.ui.setupUi(self)

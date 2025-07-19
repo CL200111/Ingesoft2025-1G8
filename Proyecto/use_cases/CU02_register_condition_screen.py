@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU02_register_condition_screen import Ui_register_condition_screen
 
 class RegisterConditionScreen(QWidget):
-    def __init__(self):
+    def __init__(self, user = None):
         super().__init__()
         self.ui = Ui_register_condition_screen()
         self.ui.setupUi(self)
