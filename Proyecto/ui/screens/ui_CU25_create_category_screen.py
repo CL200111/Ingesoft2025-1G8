@@ -53,13 +53,3 @@ class Ui_create_category_screen(object):
         self.label.setText(_translate("create_category_screen", "Nombre de la categoría:"))
         self.label_2.setText(_translate("create_category_screen", "Descripción (opcional):"))
         self.saveButton.setText(_translate("create_category_screen", "Guardar categoría"))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    create_category_screen = QtWidgets.QWidget()
-    ui = Ui_create_category_screen()
-    ui.setupUi(create_category_screen)
-    create_category_screen.show()
-    sys.exit(app.exec_())

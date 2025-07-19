@@ -54,6 +54,12 @@ class CreateCategoryScreen(QWidget):
                 "✅ Éxito",
                 f"Categoría '{nombre}' creada exitosamente."
             )
+
+            QMessageBox.information(
+                self,
+                "✅ Éxito",
+                f"Categoría '{nombre}' creada exitosamente."
+            )
             self._clear_form()
 
         except Exception as e:
