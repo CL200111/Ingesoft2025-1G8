@@ -150,4 +150,45 @@ if __name__ == "__main__":
         inserted_target_type_id=lookup.tt_usuario.id,
         inserted_target_id=lector_user.id
     )
+
+    #--- SEED BOOKS ---
+    reviser = session.query(Usuario).filter_by(correo_electronico="suzana.revisor@example.com", estado=True).first()
+
+    books_data = [
+        ("La Eneida", "Virgilio", 290, "A1", "01"),
+        ("Cien Años de Soledad", "Gabriel García Márquez", 417, "A1", "02"),
+        ("Don Quijote de la Mancha", "Miguel de Cervantes", 863, "A1", "03"),
+        ("Rayuela", "Julio Cortázar", 560, "A1", "04"),
+        ("Pedro Páramo", "Juan Rulfo", 144, "A1", "05"),
+        ("El Aleph", "Jorge Luis Borges", 157, "A1", "06"),
+        ("La Ciudad y los Perros", "Mario Vargas Llosa", 376, "A1", "07"),
+        ("El amor en los tiempos del cólera", "Gabriel García Márquez", 348, "A1", "08"),
+        ("Ficciones", "Jorge Luis Borges", 200, "A1", "09"),
+        ("Sobre héroes y tumbas", "Ernesto Sabato", 460, "A1", "10"),
+        ("La tregua", "Mario Benedetti", 180, "A1", "11"),
+        ("La casa de los espíritus", "Isabel Allende", 490, "A1", "12"),
+    ]
+
+    for titulo, autor, paginas, estanteria, espacio in books_data:
+        nuevo_libro = Libro(
+            titulo=titulo,
+            autor=autor,
+            fecha=datetime.now(),  # or a historical publication date
+            numero_paginas=paginas,
+            estanteria=estanteria,
+            espacio=espacio,
+            estado_id=lookup.estado_registrado.id
+        )
+
+        session.add(nuevo_libro)
+        session.commit()
+
+        new_book = session.query(Libro).filter_by(titulo=titulo).first()
+        write_to_historial(
+            inserted_usuario_id=reviser.id,
+            inserted_accion_id=lookup.accion_crear.id,
+            inserted_target_type_id=lookup.tt_libro.id,
+            inserted_target_id=new_book.id
+        )
+
     print("✅ Test data inserted successfully.")
