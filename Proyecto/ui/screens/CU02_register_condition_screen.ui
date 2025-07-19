@@ -2,28 +2,84 @@
 <ui version="4.0">
  <class>register_condition_screen</class>
  <widget class="QWidget" name="register_condition_screen">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Revisión física del libro</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QLabel" name="label_heading">
+    <widget class="QLabel" name="libroLabel">
      <property name="text">
-      <string>📚 register condition screen Screen</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <string>Libro a revisar:</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="titleInput">
-     <property name="placeholderText">
-      <string>Enter text...</string>
+    <widget class="QLabel" name="libroLabel">
+     <property name="text">
+      <string>ID del Libro:</string>
+     </property>
+    </widget>
+</item>
+<item>
+    <widget class="QLineEdit" name="libroIdInput"/>
+</item>
+   <item>
+    <widget class="QLabel" name="estadoLabel">
+     <property name="text">
+      <string>Condición física:</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="saveButton">
+    <widget class="QComboBox" name="condicionComboBox"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="fechaInicioLabel">
      <property name="text">
-      <string>➕ Confirm</string>
+      <string>Fecha de inicio:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDateEdit" name="fechaInicioEdit">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="fechaFinLabel">
+     <property name="text">
+      <string>Fecha de finalización:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDateEdit" name="fechaFinEdit">
+     <property name="calendarPopup">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="mensajeLabel">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="guardarButton">
+     <property name="text">
+      <string>Guardar revisión</string>
      </property>
     </widget>
    </item>
