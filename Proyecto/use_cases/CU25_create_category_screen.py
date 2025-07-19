@@ -49,11 +49,7 @@ class CreateCategoryScreen(QWidget):
             session.commit()
 
 
-            QMessageBox.information(
-                self,
-                "✅ Éxito",
-                f"Categoría '{nombre}' creada exitosamente."
-            )
+    
 
             QMessageBox.information(
                 self,
