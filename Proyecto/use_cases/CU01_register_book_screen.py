@@ -4,15 +4,18 @@ from ui.screens.ui_CU01_register_book_screen import Ui_register_book_screen
 from db.database import Database
 from db.models import Libro, EstadoLibro, Historial
 from datetime import datetime
+from utils.history_logger import write_to_historial
+import db.lookup_cache as lookup
 
 session = Database().get_session()
 
 class RegisterBookScreen(QWidget):
-    def __init__(self):
+    def __init__(self, user=None):
         super().__init__()
         self.ui = Ui_register_book_screen()
         self.ui.setupUi(self)
         self.ui.saveButton.clicked.connect(self.registrar_libro)
+        self.user = user
 
     @pyqtSlot()
     def registrar_libro(self):
@@ -56,6 +59,13 @@ class RegisterBookScreen(QWidget):
 
         session.add(nuevo_libro)
         session.commit()
+        new_book = session.query(Libro).filter_by(titulo=titulo).first()
+        write_to_historial(
+            inserted_usuario_id=self.user.id,
+            inserted_accion_id=lookup.accion_crear.id,
+            inserted_target_type_id=lookup.tt_libro.id,
+            inserted_target_id=new_book.id
+            )
 
         QMessageBox.information(self, "✅ Éxito", "Libro registrado exitosamente.")
         self._clear_form()

@@ -43,11 +43,11 @@ class MainWindow(QMainWindow):
 
         self.routes = {
             "Tablero": 0,
-            "Registrar Libro": RegisterBookScreen(),
-            "Registrar Condición": RegisterConditionScreen(),
-            "Restaurar Libro": RestoreBookScreen(),
-            "Digitalizar Libro": DigitizeBookScreen(),
-            "Clasificar Libro": ClassifyBookScreen(),
+            "Registrar Libro": RegisterBookScreen(self.user),
+            "Registrar Condición": RegisterConditionScreen(self.user),
+            "Restaurar Libro": RestoreBookScreen(self.user),
+            "Digitalizar Libro": DigitizeBookScreen(self.user),
+            "Clasificar Libro": ClassifyBookScreen(self.user),
             "Consultar Historial de Libro": QueryBookHistoryScreen(),
             "Generar Reporte": GenerateReportScreen(),
             "Crear Usuario": CreateUserScreen(self.user),
