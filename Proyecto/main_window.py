@@ -66,7 +66,7 @@ class MainWindow(QMainWindow):
             "Consultar Libro": QueryBookScreen(),
             "Descargar Libro": DownloadBookScreen(),
             "Calidad Digital": DigitalQaScreen(),
-            "Crear Categoría": CreateCategoryScreen(),
+            "Crear Categoría": CreateCategoryScreen(self.user),
         }
 
         # Mapeo de roles a características disponibles
