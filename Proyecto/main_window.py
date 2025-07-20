@@ -47,7 +47,7 @@ class MainWindow(QMainWindow):
             "Registrar Condición": RegisterConditionScreen(self.user),
             "Restaurar Libro": RestoreBookScreen(self.user),
             "Digitalizar Libro": DigitizeBookScreen(self.user),
-            "Clasificar Libro": ClassifyBookScreen(),
+            "Clasificar Libro": ClassifyBookScreen(self.user),
             "Consultar Historial de Libro": QueryBookHistoryScreen(),
             "Generar Reporte": GenerateReportScreen(),
             "Crear Usuario": CreateUserScreen(self.user),
