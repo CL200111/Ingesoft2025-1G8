@@ -2,7 +2,7 @@ import unittest
 import sys
 import os
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from unittest.mock import MagicMock, patch
 
@@ -11,6 +11,7 @@ from use_cases.CU06_login_screen import LoginScreen
 from db.models import Usuario
 
 app = QApplication([])  # Required for QWidget-based tests
+
 
 class TestLoginScreen(unittest.TestCase):
     def setUp(self):
@@ -58,22 +59,31 @@ class TestLoginScreen(unittest.TestCase):
         self.screen.handle_login()
 
         # Assert
-        self.assertEqual(self.screen.ui.err_display.text(), "❌ Credenciales inválidas o usuario inactivo")
+        self.assertEqual(
+            self.screen.ui.err_display.text(),
+            "❌ Credenciales inválidas o usuario inactivo",
+        )
         self.login_success_callback.assert_not_called()
 
     def test_missing_fields(self):
         # Case: email and password empty
         self.screen.handle_login()
-        self.assertEqual(self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios")
+        self.assertEqual(
+            self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios"
+        )
 
         # Case: email only
         self.screen.ui.email_in.setText("only@example.com")
         self.screen.ui.password_in.setText("")
         self.screen.handle_login()
-        self.assertEqual(self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios")
+        self.assertEqual(
+            self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios"
+        )
 
         # Case: password only
         self.screen.ui.email_in.setText("")
         self.screen.ui.password_in.setText("onlypass")
         self.screen.handle_login()
-        self.assertEqual(self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios")
+        self.assertEqual(
+            self.screen.ui.err_display.text(), "⚠️ Todos los campos son obligatorios"
+        )

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU21_restore_password_screen import Ui_restore_password_screen
 
+
 class RestorePasswordScreen(QWidget):
     def __init__(self):
         super().__init__()

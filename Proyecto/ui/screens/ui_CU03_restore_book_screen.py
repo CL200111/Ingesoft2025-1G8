@@ -80,9 +80,19 @@ class Ui_restore_book_screen(object):
 
     def retranslateUi(self, restore_book_screen):
         _translate = QtCore.QCoreApplication.translate
-        restore_book_screen.setWindowTitle(_translate("restore_book_screen", "Restauración física del libro"))
-        self.libroLabel.setText(_translate("restore_book_screen", "ID del Libro a restaurar:"))
+        restore_book_screen.setWindowTitle(
+            _translate("restore_book_screen", "Restauración física del libro")
+        )
+        self.libroLabel.setText(
+            _translate("restore_book_screen", "ID del Libro a restaurar:")
+        )
         self.estadoLabel.setText(_translate("restore_book_screen", "Condición física:"))
-        self.fechaInicioLabel.setText(_translate("restore_book_screen", "Fecha de inicio:"))
-        self.fechaFinLabel.setText(_translate("restore_book_screen", "Fecha de finalización:"))
-        self.guardarButton.setText(_translate("restore_book_screen", "Guardar restauración"))
+        self.fechaInicioLabel.setText(
+            _translate("restore_book_screen", "Fecha de inicio:")
+        )
+        self.fechaFinLabel.setText(
+            _translate("restore_book_screen", "Fecha de finalización:")
+        )
+        self.guardarButton.setText(
+            _translate("restore_book_screen", "Guardar restauración")
+        )

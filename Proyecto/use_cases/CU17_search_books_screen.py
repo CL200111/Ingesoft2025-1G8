@@ -2,7 +2,8 @@ from PyQt5.QtWidgets import QWidget, QTableWidgetItem
 from sqlalchemy import text
 from ui.screens.ui_CU17_search_books_screen import Ui_search_books_screen
 from db.database import Database
-from db.models import Libro, Categoria, EstadoLibro
+from db.models import Libro, EstadoLibro
+
 
 class SearchBooksScreen(QWidget):
     def __init__(self):
@@ -75,12 +76,24 @@ class SearchBooksScreen(QWidget):
                 categoria_nombre = libro.categoria.nombre if libro.categoria else "N/A"
                 estado_nombre = libro.estado.nombre if libro.estado else "N/A"
 
-                self.ui.results_table.setItem(row_position, 0, QTableWidgetItem(str(libro.id)))
-                self.ui.results_table.setItem(row_position, 1, QTableWidgetItem(libro.titulo))
-                self.ui.results_table.setItem(row_position, 2, QTableWidgetItem(libro.autor))
-                self.ui.results_table.setItem(row_position, 3, QTableWidgetItem(libro.isbn))
-                self.ui.results_table.setItem(row_position, 4, QTableWidgetItem(categoria_nombre))
-                self.ui.results_table.setItem(row_position, 5, QTableWidgetItem(estado_nombre))
+                self.ui.results_table.setItem(
+                    row_position, 0, QTableWidgetItem(str(libro.id))
+                )
+                self.ui.results_table.setItem(
+                    row_position, 1, QTableWidgetItem(libro.titulo)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 2, QTableWidgetItem(libro.autor)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 3, QTableWidgetItem(libro.isbn)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 4, QTableWidgetItem(categoria_nombre)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 5, QTableWidgetItem(estado_nombre)
+                )
 
         except Exception as e:
             print(f"Error durante la búsqueda de libros: {e}")

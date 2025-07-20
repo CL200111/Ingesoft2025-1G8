@@ -2,12 +2,12 @@ from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5.QtCore import pyqtSlot, QDate
 from ui.screens.ui_CU02_register_condition_screen import Ui_register_condition_screen
 from db.database import Database
-from db.models import Libro, EstadoLibro, Tarea, Historial
-from datetime import datetime
+from db.models import Libro, EstadoLibro, Tarea
 from utils.history_logger import write_to_historial
 import db.lookup_cache as lookup
 
 session = Database().get_session()
+
 
 class RegisterConditionScreen(QWidget):
     def __init__(self, user=None):
@@ -22,7 +22,9 @@ class RegisterConditionScreen(QWidget):
         self.ui.fechaFinEdit.setDate(today)
 
         # Configurar opciones de condición física
-        self.ui.condicionComboBox.addItem("Buen estado - Listo para digitalización", "bueno")
+        self.ui.condicionComboBox.addItem(
+            "Buen estado - Listo para digitalización", "bueno"
+        )
         self.ui.condicionComboBox.addItem("Requiere restauración", "restauracion")
 
         self.ui.guardarButton.clicked.connect(self.registrar_revision)
@@ -48,7 +50,9 @@ class RegisterConditionScreen(QWidget):
             return
 
         if fecha_fin < fecha_inicio:
-            self.ui.mensajeLabel.setText("La fecha de finalización no puede ser anterior a la de inicio.")
+            self.ui.mensajeLabel.setText(
+                "La fecha de finalización no puede ser anterior a la de inicio."
+            )
             return
 
         # Verificar libro y su estado
@@ -59,14 +63,20 @@ class RegisterConditionScreen(QWidget):
 
         estado_actual = session.query(EstadoLibro).filter_by(id=libro.estado_id).first()
         if estado_actual.nombre != "Registrado":
-            self.ui.mensajeLabel.setText(f"El libro no está en estado 'Registrado'. Estado actual: {estado_actual.nombre}")
+            self.ui.mensajeLabel.setText(
+                f"El libro no está en estado 'Registrado'. Estado actual: {estado_actual.nombre}"
+            )
             return
 
         # Determinar nuevo estado según condición
         if condicion == "bueno":
-            nuevo_estado = session.query(EstadoLibro).filter_by(nombre="En digitalización").first()
+            nuevo_estado = (
+                session.query(EstadoLibro).filter_by(nombre="En digitalización").first()
+            )
         else:
-            nuevo_estado = session.query(EstadoLibro).filter_by(nombre="En restauración").first()
+            nuevo_estado = (
+                session.query(EstadoLibro).filter_by(nombre="En restauración").first()
+            )
 
         if not nuevo_estado:
             self.ui.mensajeLabel.setText("No se encontró el estado correspondiente.")
@@ -82,20 +92,22 @@ class RegisterConditionScreen(QWidget):
             fecha_asignacion=fecha_inicio,
             fecha_finalizacion=fecha_fin,
             estado_nuevo_id=nuevo_estado.id,
-            observaciones=f"Revisión física: {condicion}"
+            observaciones=f"Revisión física: {condicion}",
         )
 
         session.add(nueva_tarea)
         session.commit()
 
-        QMessageBox.information(self, "✅ Éxito", "Revisión física registrada exitosamente.")
+        QMessageBox.information(
+            self, "✅ Éxito", "Revisión física registrada exitosamente."
+        )
 
         write_to_historial(
             inserted_usuario_id=self.user.id,
             inserted_accion_id=lookup.accion_modificar.id,
             inserted_target_type_id=lookup.tt_libro.id,
-            inserted_target_id=libro.id
-            )
+            inserted_target_id=libro.id,
+        )
 
         self._clear_form()
 

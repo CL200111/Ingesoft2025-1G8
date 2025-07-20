@@ -15,7 +15,9 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1280, 720)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
@@ -92,6 +94,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ArchiBox - Main"))
-        self.label_dashboard.setText(_translate("MainWindow", "¡Bienvenido al sistema ArchiBox!"))
+        self.label_dashboard.setText(
+            _translate("MainWindow", "¡Bienvenido al sistema ArchiBox!")
+        )
         self.label_books.setText(_translate("MainWindow", "Books Screen"))
         self.label_users.setText(_translate("MainWindow", "Users Screen"))

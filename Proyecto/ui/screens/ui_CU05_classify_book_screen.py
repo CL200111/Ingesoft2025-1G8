@@ -43,21 +43,27 @@ class Ui_classify_book_screen(object):
         self.title_display = QtWidgets.QLabel(classify_book_screen)
         self.title_display.setText("")
         self.title_display.setObjectName("title_display")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.title_display)
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.title_display
+        )
         self.label_4 = QtWidgets.QLabel(classify_book_screen)
         self.label_4.setObjectName("label_4")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_4)
         self.author_display = QtWidgets.QLabel(classify_book_screen)
         self.author_display.setText("")
         self.author_display.setObjectName("author_display")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.author_display)
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.author_display
+        )
         self.label_5 = QtWidgets.QLabel(classify_book_screen)
         self.label_5.setObjectName("label_5")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_5)
         self.current_category_display = QtWidgets.QLabel(classify_book_screen)
         self.current_category_display.setText("")
         self.current_category_display.setObjectName("current_category_display")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.current_category_display)
+        self.formLayout.setWidget(
+            2, QtWidgets.QFormLayout.FieldRole, self.current_category_display
+        )
         self.verticalLayout.addLayout(self.formLayout)
         self.save_button = QtWidgets.QPushButton(classify_book_screen)
         self.save_button.setObjectName("save_button")
@@ -68,17 +74,22 @@ class Ui_classify_book_screen(object):
 
     def retranslateUi(self, classify_book_screen):
         _translate = QtCore.QCoreApplication.translate
-        classify_book_screen.setWindowTitle(_translate("classify_book_screen", "Clasificar Libro"))
+        classify_book_screen.setWindowTitle(
+            _translate("classify_book_screen", "Clasificar Libro")
+        )
         self.label.setText(_translate("classify_book_screen", "Libro a clasificar:"))
         self.label_2.setText(_translate("classify_book_screen", "Categoría:"))
         self.label_3.setText(_translate("classify_book_screen", "Título:"))
         self.label_4.setText(_translate("classify_book_screen", "Autor:"))
         self.label_5.setText(_translate("classify_book_screen", "Categoría actual:"))
-        self.save_button.setText(_translate("classify_book_screen", "Guardar Clasificación"))
+        self.save_button.setText(
+            _translate("classify_book_screen", "Guardar Clasificación")
+        )
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     classify_book_screen = QtWidgets.QWidget()
     ui = Ui_classify_book_screen()

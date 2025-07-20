@@ -1,17 +1,18 @@
 import sys
-import os
 import unittest
 from unittest.mock import MagicMock
 
 # Mockea PyQt5 para evitar errores de QApplication
-sys.modules['PyQt5'] = MagicMock()
-sys.modules['PyQt5.QtWidgets'] = MagicMock()
-sys.modules['PyQt5.QtCore'] = MagicMock()
-sys.modules['PyQt5.QtGui'] = MagicMock()
+sys.modules["PyQt5"] = MagicMock()
+sys.modules["PyQt5.QtWidgets"] = MagicMock()
+sys.modules["PyQt5.QtCore"] = MagicMock()
+sys.modules["PyQt5.QtGui"] = MagicMock()
+
 
 # Mockea SearchUsersScreen directamente
 class SearchUsersScreen(MagicMock):
     pass
+
 
 class TestSearchUsersScreenSimple(unittest.TestCase):
     def setUp(self):
@@ -32,5 +33,6 @@ class TestSearchUsersScreenSimple(unittest.TestCase):
         self.screen._load_combos()
         self.assertTrue(True)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

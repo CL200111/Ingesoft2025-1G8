@@ -49,7 +49,15 @@ class Ui_create_category_screen(object):
 
     def retranslateUi(self, create_category_screen):
         _translate = QtCore.QCoreApplication.translate
-        create_category_screen.setWindowTitle(_translate("create_category_screen", "Crear nueva categoría"))
-        self.label.setText(_translate("create_category_screen", "Nombre de la categoría:"))
-        self.label_2.setText(_translate("create_category_screen", "Descripción (opcional):"))
-        self.saveButton.setText(_translate("create_category_screen", "Guardar categoría"))
+        create_category_screen.setWindowTitle(
+            _translate("create_category_screen", "Crear nueva categoría")
+        )
+        self.label.setText(
+            _translate("create_category_screen", "Nombre de la categoría:")
+        )
+        self.label_2.setText(
+            _translate("create_category_screen", "Descripción (opcional):")
+        )
+        self.saveButton.setText(
+            _translate("create_category_screen", "Guardar categoría")
+        )

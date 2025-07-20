@@ -15,7 +15,9 @@ class Ui_login_screen(object):
     def setupUi(self, login_screen):
         login_screen.setObjectName("login_screen")
         login_screen.resize(400, 420)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(login_screen.sizePolicy().hasHeightForWidth())
@@ -29,7 +31,12 @@ class Ui_login_screen(object):
         font.setFamily("Sans Serif")
         font.setPointSize(12)
         self.access.setFont(font)
-        self.access.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
+        self.access.setInputMethodHints(
+            QtCore.Qt.ImhHiddenText
+            | QtCore.Qt.ImhNoAutoUppercase
+            | QtCore.Qt.ImhNoPredictiveText
+            | QtCore.Qt.ImhSensitiveData
+        )
         self.access.setObjectName("access")
         self.email_in = QtWidgets.QLineEdit(login_screen)
         self.email_in.setGeometry(QtCore.QRect(10, 250, 381, 31))
@@ -52,7 +59,12 @@ class Ui_login_screen(object):
         self.password_ask_2.setObjectName("password_ask_2")
         self.password_in = QtWidgets.QLineEdit(login_screen)
         self.password_in.setGeometry(QtCore.QRect(10, 320, 381, 31))
-        self.password_in.setInputMethodHints(QtCore.Qt.ImhHiddenText|QtCore.Qt.ImhNoAutoUppercase|QtCore.Qt.ImhNoPredictiveText|QtCore.Qt.ImhSensitiveData)
+        self.password_in.setInputMethodHints(
+            QtCore.Qt.ImhHiddenText
+            | QtCore.Qt.ImhNoAutoUppercase
+            | QtCore.Qt.ImhNoPredictiveText
+            | QtCore.Qt.ImhSensitiveData
+        )
         self.password_in.setEchoMode(QtWidgets.QLineEdit.Password)
         self.password_in.setObjectName("password_in")
         self.err_display = QtWidgets.QLabel(login_screen)
@@ -63,7 +75,9 @@ class Ui_login_screen(object):
         self.err_display.setObjectName("err_display")
         self.bannerLabel = QtWidgets.QLabel(login_screen)
         self.bannerLabel.setGeometry(QtCore.QRect(0, 0, 400, 200))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(
+            QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed
+        )
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.bannerLabel.sizePolicy().hasHeightForWidth())

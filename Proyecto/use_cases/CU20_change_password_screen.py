@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QWidget, QMessageBox
-from PyQt5.QtCore import Qt
 from ui.screens.ui_CU20_change_password_screen import Ui_change_password_screen
 from db.database import Database
 from utils.password_hashing import hash_password
@@ -8,6 +7,7 @@ from db.models import Usuario
 import db.lookup_cache as lookup
 
 session = Database().get_session()
+
 
 class ChangePasswordScreen(QWidget):
     def __init__(self, user=None):
@@ -82,7 +82,9 @@ class ChangePasswordScreen(QWidget):
             return
 
         # All good — update password
-        usuario_db = session.query(Usuario).filter_by(id=self.user.id, estado=True).first()
+        usuario_db = (
+            session.query(Usuario).filter_by(id=self.user.id, estado=True).first()
+        )
         if usuario_db:
             usuario_db.hash_contraseña = hash_password(new)
             session.commit()
@@ -92,10 +94,12 @@ class ChangePasswordScreen(QWidget):
                 inserted_usuario_id=self.user.id,
                 inserted_accion_id=lookup.accion_modificar.id,
                 inserted_target_type_id=lookup.tt_usuario.id,
-                inserted_target_id=self.user.id
+                inserted_target_id=self.user.id,
             )
 
-            QMessageBox.information(self, "Éxito", "Contraseña actualizada correctamente.")
+            QMessageBox.information(
+                self, "Éxito", "Contraseña actualizada correctamente."
+            )
             self._clear_inputs()
         else:
             self._show_error("No se pudo actualizar la contraseña.")
@@ -105,7 +109,8 @@ class ChangePasswordScreen(QWidget):
     def _validate_password(self, password):
         """Password must have: min 8 chars, 1 uppercase, 1 number, 1 special char."""
         import re
-        pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$'
+
+        pattern = r"^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$"
         return re.match(pattern, password)
 
     def _show_error(self, message):

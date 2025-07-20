@@ -34,13 +34,19 @@ class Ui_search_users_screen(object):
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_nombre)
         self.nombres_input = QtWidgets.QLineEdit(search_users_screen)
         self.nombres_input.setObjectName("nombres_input")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.nombres_input)
+        self.formLayout.setWidget(
+            0, QtWidgets.QFormLayout.FieldRole, self.nombres_input
+        )
         self.label_apellidos = QtWidgets.QLabel(search_users_screen)
         self.label_apellidos.setObjectName("label_apellidos")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_apellidos)
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.LabelRole, self.label_apellidos
+        )
         self.apellidos_input = QtWidgets.QLineEdit(search_users_screen)
         self.apellidos_input.setObjectName("apellidos_input")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.apellidos_input)
+        self.formLayout.setWidget(
+            1, QtWidgets.QFormLayout.FieldRole, self.apellidos_input
+        )
         self.label_correo = QtWidgets.QLabel(search_users_screen)
         self.label_correo.setObjectName("label_correo")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_correo)
@@ -87,11 +93,17 @@ class Ui_search_users_screen(object):
 
     def retranslateUi(self, search_users_screen):
         _translate = QtCore.QCoreApplication.translate
-        search_users_screen.setWindowTitle(_translate("search_users_screen", "Búsqueda de Usuarios"))
-        self.label_heading.setText(_translate("search_users_screen", "👥 Búsqueda de Usuarios"))
+        search_users_screen.setWindowTitle(
+            _translate("search_users_screen", "Búsqueda de Usuarios")
+        )
+        self.label_heading.setText(
+            _translate("search_users_screen", "👥 Búsqueda de Usuarios")
+        )
         self.label_nombre.setText(_translate("search_users_screen", "Nombres:"))
         self.label_apellidos.setText(_translate("search_users_screen", "Apellidos:"))
-        self.label_correo.setText(_translate("search_users_screen", "Correo Electrónico:"))
+        self.label_correo.setText(
+            _translate("search_users_screen", "Correo Electrónico:")
+        )
         self.label_rol.setText(_translate("search_users_screen", "Rol:"))
         self.label_estado.setText(_translate("search_users_screen", "Estado:"))
         self.search_button.setText(_translate("search_users_screen", "Buscar Usuarios"))
@@ -109,6 +121,7 @@ class Ui_search_users_screen(object):
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     search_users_screen = QtWidgets.QWidget()
     ui = Ui_search_users_screen()

@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU08_generate_report_screen import Ui_generate_report_screen
 
+
 class GenerateReportScreen(QWidget):
     def __init__(self):
         super().__init__()

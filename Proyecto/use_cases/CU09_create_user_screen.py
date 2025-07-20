@@ -2,14 +2,14 @@ from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5.QtCore import pyqtSlot
 from ui.screens.ui_CU09_create_user_screen import Ui_create_user_screen
 from db.database import Database
-from db.models import Usuario, Rol, Historial
+from db.models import Usuario, Rol
 from utils.password_hashing import hash_password
 from utils.history_logger import write_to_historial
 import db.lookup_cache as lookup
 import re
-import datetime
 
 session = Database().get_session()
+
 
 class CreateUserScreen(QWidget):
     def __init__(self, user=None):
@@ -44,7 +44,9 @@ class CreateUserScreen(QWidget):
             return
 
         if not self._validate_password(contraseña):
-            self._show_error("La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un símbolo.")
+            self._show_error(
+                "La contraseña debe tener mínimo 8 caracteres, una mayúscula, un número y un símbolo."
+            )
             return
 
         if session.query(Usuario).filter_by(correo_electronico=correo).first():
@@ -58,7 +60,7 @@ class CreateUserScreen(QWidget):
             correo_electronico=correo,
             hash_contraseña=hash_password(contraseña),
             rol_id=rol_id,
-            estado=True
+            estado=True,
         )
 
         session.add(nuevo_usuario)
@@ -66,19 +68,23 @@ class CreateUserScreen(QWidget):
 
         print("Usuario creado exitosamente.")
 
-        new_user = session.query(Usuario).filter_by(correo_electronico=correo, estado=True).first()
+        new_user = (
+            session.query(Usuario)
+            .filter_by(correo_electronico=correo, estado=True)
+            .first()
+        )
         write_to_historial(
             inserted_usuario_id=self.user.id,
             inserted_accion_id=lookup.accion_crear.id,
             inserted_target_type_id=lookup.tt_usuario.id,
-            inserted_target_id=new_user.id
-            )
+            inserted_target_id=new_user.id,
+        )
 
         QMessageBox.information(self, "Éxito", "Usuario creado exitosamente")
         self._clear_form()
 
     def _validate_password(self, password):
-        pattern = r'^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$'
+        pattern = r"^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$"
         return re.match(pattern, password)
 
     def _clear_form(self):

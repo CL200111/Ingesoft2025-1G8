@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QMessageBox
+from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_login_screen import Ui_login_screen
 from db.database import Database
 from db.models import Usuario
-import bcrypt
+
 
 class LoginScreen(QWidget):
     def __init__(self, on_login_success):
@@ -25,7 +25,11 @@ class LoginScreen(QWidget):
             return
 
         session = Database().get_session()
-        user = session.query(Usuario).filter_by(correo_electronico=email, estado=True).first()
+        user = (
+            session.query(Usuario)
+            .filter_by(correo_electronico=email, estado=True)
+            .first()
+        )
 
         if user and user.verify_password(password):
             self.ui.err_display.setText("")

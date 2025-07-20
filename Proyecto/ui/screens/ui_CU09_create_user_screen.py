@@ -85,14 +85,24 @@ class Ui_create_user_screen(object):
 
     def retranslateUi(self, create_user_screen):
         _translate = QtCore.QCoreApplication.translate
-        self.label_heading.setText(_translate("create_user_screen", "👤 Crear usuario nuevo"))
+        self.label_heading.setText(
+            _translate("create_user_screen", "👤 Crear usuario nuevo")
+        )
         self.label_nombres.setText(_translate("create_user_screen", "Nombres:"))
-        self.nombresInput.setPlaceholderText(_translate("create_user_screen", "Ingrese nombres"))
+        self.nombresInput.setPlaceholderText(
+            _translate("create_user_screen", "Ingrese nombres")
+        )
         self.label_apellidos.setText(_translate("create_user_screen", "Apellidos:"))
-        self.apellidosInput.setPlaceholderText(_translate("create_user_screen", "Ingrese apellidos"))
+        self.apellidosInput.setPlaceholderText(
+            _translate("create_user_screen", "Ingrese apellidos")
+        )
         self.label_email.setText(_translate("create_user_screen", "E-Mail:"))
-        self.emailInput.setPlaceholderText(_translate("create_user_screen", "usuario@ejemplo.com"))
+        self.emailInput.setPlaceholderText(
+            _translate("create_user_screen", "usuario@ejemplo.com")
+        )
         self.label_password.setText(_translate("create_user_screen", "Contraseña:"))
-        self.passwordInput.setPlaceholderText(_translate("create_user_screen", "Ingrese contraseña"))
+        self.passwordInput.setPlaceholderText(
+            _translate("create_user_screen", "Ingrese contraseña")
+        )
         self.label_rol.setText(_translate("create_user_screen", "Rol:"))
         self.saveButton.setText(_translate("create_user_screen", "➕ Confirmar"))
