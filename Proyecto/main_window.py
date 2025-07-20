@@ -37,7 +37,9 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.setWindowIcon(QIcon(get_asset_path("ArchiBox_alpha_icon.png")))  # or "app_icon.ico"
+        self.setWindowIcon(
+            QIcon(get_asset_path("ArchiBox_alpha_icon.png"))
+        )  # or "app_icon.ico"
 
         self.user = user  # Could be passed from login window
 
@@ -72,44 +74,68 @@ class MainWindow(QMainWindow):
         # Mapeo de roles a características disponibles
         role_permissions = {
             "Administrador": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Crear Usuario", "Editar Usuario", "Desactivar Usuario", "Buscar Usuarios",
-                "Modificar Libro", "Generar Reporte", "Restaurar Contraseña",
-                "Consultar Historial de Libro", "Asignar Tarea", "Crear Categoría",
-                "Desactivar Libro"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Crear Usuario",
+                "Editar Usuario",
+                "Desactivar Usuario",
+                "Buscar Usuarios",
+                "Modificar Libro",
+                "Generar Reporte",
+                "Restaurar Contraseña",
+                "Consultar Historial de Libro",
+                "Asignar Tarea",
+                "Crear Categoría",
+                "Desactivar Libro",
             ],
             "Revisor": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Registrar Libro", "Registrar Condición"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Registrar Libro",
+                "Registrar Condición",
             ],
             "Restaurador": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Restaurar Libro"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Restaurar Libro",
             ],
             "Digitalizador": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Digitalizar Libro"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Digitalizar Libro",
             ],
             "Supervisor de calidad": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Calidad Digital", "Calidad Física"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Calidad Digital",
+                "Calidad Física",
             ],
             "Clasificador": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Clasificar Libro"
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Clasificar Libro",
             ],
             "Lector": [
-                "Notificaciones", "Cambiar Contraseña", "Buscar Libros",
-                "Consultar Libro", "Descargar Libro"
-            ]
+                "Notificaciones",
+                "Cambiar Contraseña",
+                "Buscar Libros",
+                "Consultar Libro",
+                "Descargar Libro",
+            ],
         }
 
         # Obtener nombre de rol del usuario
         user_role = getattr(getattr(self.user, "rol", None), "nombre", "Lector")
-        print("Usuario leido:",user)
+        print("Usuario leido:", user)
 
         # Obtener nombre de rol del usuario (si existe)
-        #user_role = self.user.rol.nombre if self.user and self.user.rol else "Lector"
+        # user_role = self.user.rol.nombre if self.user and self.user.rol else "Lector"
 
         print("Rol identificado: ", user_role)
 
@@ -117,7 +143,7 @@ class MainWindow(QMainWindow):
         self.available_features = role_permissions.get(user_role, [])
 
         # Asegurarse de que siempre se incluya el tablero
-        #if "Tablero" not in self.available_features:
+        # if "Tablero" not in self.available_features:
         #    self.available_features.insert(0, "Tablero")
 
         # Agregar pantallas al stackedWidget solo si están permitidas
@@ -139,9 +165,17 @@ class MainWindow(QMainWindow):
 
             # Assign screen switch logic
             if isinstance(self.routes[feature], int):
-                button.clicked.connect(lambda checked, idx=self.routes[feature]: self.ui.stackedWidget.setCurrentIndex(idx))
+                button.clicked.connect(
+                    lambda checked,
+                    idx=self.routes[feature]: self.ui.stackedWidget.setCurrentIndex(idx)
+                )
             else:
-                button.clicked.connect(lambda checked, widget=self.routes[feature]: self.ui.stackedWidget.setCurrentWidget(widget))
+                button.clicked.connect(
+                    lambda checked,
+                    widget=self.routes[feature]: self.ui.stackedWidget.setCurrentWidget(
+                        widget
+                    )
+                )
 
             layout.addWidget(button)
 
@@ -150,5 +184,5 @@ class MainWindow(QMainWindow):
         size = self.geometry()
         self.move(
             screen.center().x() - size.width() // 2,
-            screen.center().y() - size.height() // 2
+            screen.center().y() - size.height() // 2,
         )

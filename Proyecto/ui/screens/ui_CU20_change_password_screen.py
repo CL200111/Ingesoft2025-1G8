@@ -86,7 +86,9 @@ class Ui_change_password_screen(object):
         self.verticalLayout.addLayout(self.confirmPasswordLayout)
         self.strengthBar = QtWidgets.QProgressBar(change_password_screen)
         self.strengthBar.setVisible(False)
-        self.strengthBar.setStyleSheet("QProgressBar::chunk { background-color: #00c853; }")
+        self.strengthBar.setStyleSheet(
+            "QProgressBar::chunk { background-color: #00c853; }"
+        )
         self.strengthBar.setMaximum(100)
         self.strengthBar.setProperty("value", 0)
         self.strengthBar.setTextVisible(False)
@@ -113,11 +115,21 @@ class Ui_change_password_screen(object):
 
     def retranslateUi(self, change_password_screen):
         _translate = QtCore.QCoreApplication.translate
-        self.label_heading.setText(_translate("change_password_screen", "🔐 Cambiar contraseña"))
-        self.label_current_password.setText(_translate("change_password_screen", "Contraseña actual"))
+        self.label_heading.setText(
+            _translate("change_password_screen", "🔐 Cambiar contraseña")
+        )
+        self.label_current_password.setText(
+            _translate("change_password_screen", "Contraseña actual")
+        )
         self.toggleCurrentPassword.setText(_translate("change_password_screen", "👁"))
-        self.label_new_password.setText(_translate("change_password_screen", "Nueva contraseña"))
+        self.label_new_password.setText(
+            _translate("change_password_screen", "Nueva contraseña")
+        )
         self.toggleNewPassword.setText(_translate("change_password_screen", "👁"))
-        self.label_confirm_password.setText(_translate("change_password_screen", "Confirmar nueva contraseña"))
+        self.label_confirm_password.setText(
+            _translate("change_password_screen", "Confirmar nueva contraseña")
+        )
         self.toggleConfirmPassword.setText(_translate("change_password_screen", "👁"))
-        self.saveButton.setText(_translate("change_password_screen", "✅ Confirmar cambio"))
+        self.saveButton.setText(
+            _translate("change_password_screen", "✅ Confirmar cambio")
+        )

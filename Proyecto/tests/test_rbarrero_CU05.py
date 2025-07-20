@@ -2,10 +2,10 @@
 import unittest
 from unittest.mock import MagicMock, patch
 from PyQt5.QtWidgets import QApplication
-from ui.screens.ui_CU05_classify_book_screen import Ui_classify_book_screen
 from use_cases.CU05_classify_book_screen import ClassifyBookScreen
 
 app = QApplication([])  # Necesario para iniciar widgets PyQt
+
 
 class TestClassifyBookScreen(unittest.TestCase):
     def setUp(self):
@@ -36,7 +36,9 @@ class TestClassifyBookScreen(unittest.TestCase):
     @patch("use_cases.CU05_classify_book_screen.QMessageBox.information")
     @patch("use_cases.CU05_classify_book_screen.write_to_historial")
     @patch("use_cases.CU05_classify_book_screen.lookup")
-    def test_save_classification_success(self, mock_lookup, mock_write_historial, mock_info):
+    def test_save_classification_success(
+        self, mock_lookup, mock_write_historial, mock_info
+    ):
         # Simular libro existente
         mock_estado = MagicMock(nombre="Pendiente")
         mock_book = MagicMock(id=10, titulo="Libro de prueba", estado=mock_estado)
@@ -61,12 +63,13 @@ class TestClassifyBookScreen(unittest.TestCase):
             inserted_usuario_id=self.mock_user.id,
             inserted_accion_id=2,
             inserted_target_type_id=3,
-            inserted_target_id=10
+            inserted_target_id=10,
         )
         mock_info.assert_called()
 
     def tearDown(self):
         self.window.close()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

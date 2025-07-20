@@ -4,7 +4,8 @@ from ui.screens.ui_CU04_digitize_book_screen import Ui_digitize_book_screen
 from db.database import Database
 from db.models import Libro, EstadoLibro, Accion, TargetType
 from utils.history_logger import write_to_historial
-from utils.path_utils import get_project_root, get_books_path
+from utils.path_utils import get_books_path
+
 
 class DigitizeBookScreen(QWidget):
     def __init__(self, user):
@@ -24,20 +25,29 @@ class DigitizeBookScreen(QWidget):
     def _load_eligible_books(self):
         self.ui.book_combo.clear()
         self.ui.book_combo.addItem("Seleccione un libro...", -1)
-        
+
         try:
-            eligible_states = self.session.query(EstadoLibro).filter(
-                EstadoLibro.nombre.in_(['En digitalización', 'Restaurado'])
-            ).all()
-            
+            eligible_states = (
+                self.session.query(EstadoLibro)
+                .filter(EstadoLibro.nombre.in_(["En digitalización", "Restaurado"]))
+                .all()
+            )
+
             if not eligible_states:
                 return
 
             eligible_state_ids = [state.id for state in eligible_states]
-            books = self.session.query(Libro).filter(Libro.estado_id.in_(eligible_state_ids)).order_by(Libro.titulo).all()
-            
+            books = (
+                self.session.query(Libro)
+                .filter(Libro.estado_id.in_(eligible_state_ids))
+                .order_by(Libro.titulo)
+                .all()
+            )
+
             for book in books:
-                self.ui.book_combo.addItem(f"{book.titulo} (ISBN: {book.isbn})", book.id)
+                self.ui.book_combo.addItem(
+                    f"{book.titulo} (ISBN: {book.isbn})", book.id
+                )
         except Exception as e:
             print(f"Error al cargar libros para digitalizar: {e}")
 
@@ -58,31 +68,46 @@ class DigitizeBookScreen(QWidget):
     def save_digitization(self):
         book_id = self.ui.book_combo.currentData()
         if book_id == -1:
-            QMessageBox.warning(self, "Selección Requerida", "Por favor, seleccione un libro.")
+            QMessageBox.warning(
+                self, "Selección Requerida", "Por favor, seleccione un libro."
+            )
             return
 
         pdf_filename = self.ui.pdf_filename_input.text().strip()
         if not pdf_filename:
-            QMessageBox.warning(self, "Archivo Requerido", "Por favor, ingrese el nombre del archivo PDF.")
+            QMessageBox.warning(
+                self,
+                "Archivo Requerido",
+                "Por favor, ingrese el nombre del archivo PDF.",
+            )
             return
 
         try:
             pdf_path = get_books_path(pdf_filename)
-            
+
             if not os.path.exists(pdf_path):
-                QMessageBox.critical(self, "Archivo no Encontrado", 
-                                     f"No se encontró el archivo '{pdf_filename}' en la carpeta 'assets/books'.\n\n"
-                                     f"Ruta verificada: {pdf_path}")
+                QMessageBox.critical(
+                    self,
+                    "Archivo no Encontrado",
+                    f"No se encontró el archivo '{pdf_filename}' en la carpeta 'assets/books'.\n\n"
+                    f"Ruta verificada: {pdf_path}",
+                )
                 return
 
             book = self.session.query(Libro).get(book_id)
-            new_state = self.session.query(EstadoLibro).filter_by(nombre='Digitalizado').one()
-            
+            new_state = (
+                self.session.query(EstadoLibro).filter_by(nombre="Digitalizado").one()
+            )
+
             book.directorio_pdf = pdf_filename
             book.estado_id = new_state.id
-            
-            action = self.session.query(Accion).filter_by(nombre="completar tarea").first()
-            target_type = self.session.query(TargetType).filter_by(nombre="libro").first()
+
+            action = (
+                self.session.query(Accion).filter_by(nombre="completar tarea").first()
+            )
+            target_type = (
+                self.session.query(TargetType).filter_by(nombre="libro").first()
+            )
 
             if action and target_type:
                 write_to_historial(self.user.id, action.id, target_type.id, book.id)
@@ -91,15 +116,21 @@ class DigitizeBookScreen(QWidget):
 
             self.session.commit()
 
-            QMessageBox.information(self, "Éxito", f"El libro '{book.titulo}' ha sido marcado como digitalizado exitosamente.")
-            
+            QMessageBox.information(
+                self,
+                "Éxito",
+                f"El libro '{book.titulo}' ha sido marcado como digitalizado exitosamente.",
+            )
+
             self.ui.pdf_filename_input.clear()
             self._load_eligible_books()
 
         except Exception as e:
             self.session.rollback()
-            QMessageBox.critical(self, "Error", f"Ocurrió un error al guardar la digitalización:\n{e}")
-        
+            QMessageBox.critical(
+                self, "Error", f"Ocurrió un error al guardar la digitalización:\n{e}"
+            )
+
     def closeEvent(self, event):
         self.session.close()
         super().closeEvent(event)

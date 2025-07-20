@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU14_notification_screen import Ui_notification_screen
 
+
 class NotificationScreen(QWidget):
     def __init__(self):
         super().__init__()

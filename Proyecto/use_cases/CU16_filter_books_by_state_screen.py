@@ -1,5 +1,8 @@
 from PyQt5.QtWidgets import QWidget
-from ui.screens.ui_CU16_filter_books_by_state_screen import Ui_filter_books_by_state_screen
+from ui.screens.ui_CU16_filter_books_by_state_screen import (
+    Ui_filter_books_by_state_screen,
+)
+
 
 class FilterBooksByStateScreen(QWidget):
     def __init__(self):

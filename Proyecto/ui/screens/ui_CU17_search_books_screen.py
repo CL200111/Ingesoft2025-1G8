@@ -50,10 +50,14 @@ class Ui_search_books_screen(object):
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.isbn_input)
         self.label_categoria = QtWidgets.QLabel(search_books_screen)
         self.label_categoria.setObjectName("label_categoria")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_categoria)
+        self.formLayout.setWidget(
+            3, QtWidgets.QFormLayout.LabelRole, self.label_categoria
+        )
         self.categoria_combo = QtWidgets.QComboBox(search_books_screen)
         self.categoria_combo.setObjectName("categoria_combo")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.categoria_combo)
+        self.formLayout.setWidget(
+            3, QtWidgets.QFormLayout.FieldRole, self.categoria_combo
+        )
         self.label_estado = QtWidgets.QLabel(search_books_screen)
         self.label_estado.setObjectName("label_estado")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_estado)
@@ -89,8 +93,12 @@ class Ui_search_books_screen(object):
 
     def retranslateUi(self, search_books_screen):
         _translate = QtCore.QCoreApplication.translate
-        search_books_screen.setWindowTitle(_translate("search_books_screen", "Búsqueda de Libros"))
-        self.label_heading.setText(_translate("search_books_screen", "🔍 Búsqueda de Libros"))
+        search_books_screen.setWindowTitle(
+            _translate("search_books_screen", "Búsqueda de Libros")
+        )
+        self.label_heading.setText(
+            _translate("search_books_screen", "🔍 Búsqueda de Libros")
+        )
         self.label_titulo.setText(_translate("search_books_screen", "Título:"))
         self.label_autor.setText(_translate("search_books_screen", "Autor:"))
         self.label_isbn.setText(_translate("search_books_screen", "ISBN:"))

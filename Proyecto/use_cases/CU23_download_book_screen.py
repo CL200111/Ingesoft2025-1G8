@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU23_download_book_screen import Ui_download_book_screen
 
+
 class DownloadBookScreen(QWidget):
     def __init__(self):
         super().__init__()

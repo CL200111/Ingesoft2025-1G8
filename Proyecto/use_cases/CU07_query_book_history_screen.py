@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU07_query_book_history_screen import Ui_query_book_history_screen
 
+
 class QueryBookHistoryScreen(QWidget):
     def __init__(self):
         super().__init__()

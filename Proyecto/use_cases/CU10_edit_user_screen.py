@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU10_edit_user_screen import Ui_edit_user_screen
 
+
 class EditUserScreen(QWidget):
     def __init__(self):
         super().__init__()

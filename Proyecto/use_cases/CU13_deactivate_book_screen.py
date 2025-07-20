@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget
 from ui.screens.ui_CU13_deactivate_book_screen import Ui_deactivate_book_screen
 
+
 class DeactivateBookScreen(QWidget):
     def __init__(self):
         super().__init__()

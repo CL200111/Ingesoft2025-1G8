@@ -3,6 +3,7 @@ from ui.screens.ui_CU18_search_users_screen import Ui_search_users_screen
 from db.database import Database
 from db.models import Usuario, Rol
 
+
 class SearchUsersScreen(QWidget):
     def __init__(self):
         super().__init__()
@@ -74,12 +75,22 @@ class SearchUsersScreen(QWidget):
                 rol_nombre = usuario.rol.nombre if usuario.rol else "N/A"
                 estado_texto = "Activo" if usuario.estado else "Inactivo"
 
-                self.ui.results_table.setItem(row_position, 0, QTableWidgetItem(usuario.nombres))
-                self.ui.results_table.setItem(row_position, 1, QTableWidgetItem(usuario.apellidos))
-                self.ui.results_table.setItem(row_position, 2, QTableWidgetItem(usuario.correo_electronico))
-                self.ui.results_table.setItem(row_position, 3, QTableWidgetItem(rol_nombre))
-                self.ui.results_table.setItem(row_position, 4, QTableWidgetItem(estado_texto))
-        
+                self.ui.results_table.setItem(
+                    row_position, 0, QTableWidgetItem(usuario.nombres)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 1, QTableWidgetItem(usuario.apellidos)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 2, QTableWidgetItem(usuario.correo_electronico)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 3, QTableWidgetItem(rol_nombre)
+                )
+                self.ui.results_table.setItem(
+                    row_position, 4, QTableWidgetItem(estado_texto)
+                )
+
         except Exception as e:
             print(f"Error durante la búsqueda de usuarios: {e}")
 

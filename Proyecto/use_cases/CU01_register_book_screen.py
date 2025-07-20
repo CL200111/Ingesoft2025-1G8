@@ -2,12 +2,13 @@ from PyQt5.QtWidgets import QWidget, QMessageBox
 from PyQt5.QtCore import pyqtSlot
 from ui.screens.ui_CU01_register_book_screen import Ui_register_book_screen
 from db.database import Database
-from db.models import Libro, EstadoLibro, Historial
+from db.models import Libro, EstadoLibro
 from datetime import datetime
 from utils.history_logger import write_to_historial
 import db.lookup_cache as lookup
 
 session = Database().get_session()
+
 
 class RegisterBookScreen(QWidget):
     def __init__(self, user=None):
@@ -41,7 +42,9 @@ class RegisterBookScreen(QWidget):
             return
 
         # Buscar estado inicial
-        estado_inicial = session.query(EstadoLibro).filter_by(nombre="Registrado").first()
+        estado_inicial = (
+            session.query(EstadoLibro).filter_by(nombre="Registrado").first()
+        )
         if not estado_inicial:
             self._show_error("No se encontró el estado 'Registrado'.")
             return
@@ -54,7 +57,7 @@ class RegisterBookScreen(QWidget):
             numero_paginas=paginas,
             estanteria=estanteria,
             espacio=espacio,
-            estado_id=estado_inicial.id
+            estado_id=estado_inicial.id,
         )
 
         session.add(nuevo_libro)
@@ -64,8 +67,8 @@ class RegisterBookScreen(QWidget):
             inserted_usuario_id=self.user.id,
             inserted_accion_id=lookup.accion_crear.id,
             inserted_target_type_id=lookup.tt_libro.id,
-            inserted_target_id=new_book.id
-            )
+            inserted_target_id=new_book.id,
+        )
 
         QMessageBox.information(self, "✅ Éxito", "Libro registrado exitosamente.")
         self._clear_form()

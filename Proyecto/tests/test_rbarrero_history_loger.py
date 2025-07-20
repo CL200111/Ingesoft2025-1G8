@@ -3,8 +3,8 @@ import unittest
 from unittest.mock import patch, MagicMock
 from utils.history_logger import write_to_historial
 
-class TestHistoryLogger(unittest.TestCase):
 
+class TestHistoryLogger(unittest.TestCase):
     @patch("utils.history_logger.session")
     def test_write_to_historial_success(self, mock_session):
         # Preparar mocks
@@ -18,7 +18,7 @@ class TestHistoryLogger(unittest.TestCase):
             inserted_usuario_id=1,
             inserted_accion_id=2,
             inserted_target_type_id=3,
-            inserted_target_id=10
+            inserted_target_id=10,
         )
 
         # Verificar que se llamó a add() y commit()
@@ -42,10 +42,11 @@ class TestHistoryLogger(unittest.TestCase):
                 inserted_usuario_id=1,
                 inserted_accion_id=2,
                 inserted_target_type_id=3,
-                inserted_target_id=10
+                inserted_target_id=10,
             )
 
         self.assertIn("DB error", str(context.exception))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

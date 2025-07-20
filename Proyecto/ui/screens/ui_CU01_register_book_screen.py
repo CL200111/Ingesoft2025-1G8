@@ -6,7 +6,8 @@
 #
 # WARNING: Any manual changes made to this file will be lost when pyuic5 is run again.
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtWidgets
+
 
 class Ui_register_book_screen(object):
     def setupUi(self, register_book_screen):
@@ -78,4 +79,6 @@ class Ui_register_book_screen(object):
 
     def retranslateUi(self, register_book_screen):
         _translate = QtCore.QCoreApplication.translate
-        register_book_screen.setWindowTitle(_translate("register_book_screen", "Registrar Libro"))
+        register_book_screen.setWindowTitle(
+            _translate("register_book_screen", "Registrar Libro")
+        )
